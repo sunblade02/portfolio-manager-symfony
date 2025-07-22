@@ -27,7 +27,29 @@ Coming soon... ⏳
 
 ## 📦 Installation
 
-Coming soon... ⏳
+### Requirements
+
+Make sure Docker is installed on your system.
+
+### Build the PHP development container
+
+```bash
+make build-dev-php
+```
+
+### Run the PHP development container
+
+```bash
+make dev-php
+```
+
+### Start the PHP development server
+
+```bash
+make php-serve
+```
+
+More coming soon... ⏳
 
 ## ⚙️ Configuration
 
