@@ -19,5 +19,5 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-/data/db/*
-!/data/db/.gitkeep
+/data/*
+!/data/.gitkeep
