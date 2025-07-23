@@ -43,10 +43,10 @@ make build-dev-php
 make dev-php
 ```
 
-### Start the PHP development server
+### Start the PHP and database development servers
 
 ```bash
-make php-serve
+make serve-all
 ```
 
 More coming soon... ⏳
