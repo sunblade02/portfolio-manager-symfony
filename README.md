@@ -29,24 +29,27 @@ Coming soon... ⏳
 
 ### Requirements
 
-Make sure Docker is installed on your system.
+- [Docker](https://www.docker.com/) must be installed on your system.
+- Make sure `make` are available as well.
 
-### Build the PHP development container
+### Launch the project in development environment
+
+#### 1. Build the PHP development container
 
 ```bash
 make build-dev-php
+```
+
+#### 2. Start all development services
+
+```bash
+make serve-all
 ```
 
 ### Run the PHP development container
 
 ```bash
 make dev-php
-```
-
-### Start the PHP and database development servers
-
-```bash
-make serve-all
 ```
 
 More coming soon... ⏳
