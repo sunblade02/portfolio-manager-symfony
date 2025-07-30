@@ -1,0 +1,16 @@
+@use "@fontsource/orbitron";
+
+@import "bulma/css/bulma.css";
+@import "fontawesome-free/css/all.min.css";
+
+.navbar-brand a {
+    font-family: orbitron;
+}
+
+.navbar-item.has-dropdown .navbar-dropdown {
+    display: none;
+}
+
+.navbar-item.has-dropdown.is-active .navbar-dropdown {
+    display: block;
+}

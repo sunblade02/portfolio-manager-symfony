@@ -1,17 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta charset="utf-8">
+        <title>Portfolio Manager</title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
+        <header>
+            <nav class="navbar is-transparent">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        Portfolio Manager
+                    </a>
+                    <div class="navbar-burger js-burger" data-target="navbar-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div id="navbar-menu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/"> <i class="fa fa-home"></i> Home </a>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item has-dropdown">
+                            <a class="navbar-link is-arrowless current-theme">
+                                <i class="fa fa-desktop"></i>
+                            </a>
+
+                            <div class="navbar-dropdown is-right">
+                                <a class="navbar-item set-theme" data-theme="light">
+                                    <i class="fa fa-sun"></i> Light
+                                </a>
+                                <a class="navbar-item set-theme" data-theme="dark">
+                                    <i class="fa fa-moon"></i> Dark
+                                </a>
+                                <a class="navbar-item set-theme" data-theme="system">
+                                    <i class="fa fa-desktop"></i> System
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-primary">
+                                    <strong>Sign up</strong>
+                                </a>
+                                <a class="button is-light">
+                                    Log in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>
