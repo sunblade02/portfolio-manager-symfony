@@ -34,16 +34,14 @@ Coming soon... ⏳
 
 ### Launch the project in development environment
 
-#### 1. Build the PHP development container
+```bash
+docker compose up -d
+```
+
+### Build the PHP development container
 
 ```bash
 make build-dev-php
-```
-
-#### 2. Start all development services
-
-```bash
-make serve-all
 ```
 
 ### Run the PHP development container

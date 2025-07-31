@@ -1,0 +1,29 @@
+name: portfolio-manager-symfony
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: on-failure:3
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+      MARIADB_USER: ${MARIADB_USER:-portfolio_manager}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-password}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-portfolio_manager}
+    volumes:
+      - ./data/db:/var/lib/mysql:Z
+    ports:
+      - ${DB_PORT:-3306}:3306
+
+  php:
+    build:
+      context: docker/php
+    image: dev-php
+    restart: on-failure:3
+    depends_on:
+    - db
+    volumes:
+      - ./:/app
+    ports:
+      - ${PHP_PORT:-8000}:8000
+    working_dir: /app
+    command: php -S 0.0.0.0:8000 -t public
