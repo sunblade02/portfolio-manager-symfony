@@ -4,7 +4,8 @@ PortfolioManager is a lightweight web application for managing and tracking fina
 
 ## 🚀 Features
 
-Coming soon... ⏳
+### Authentication
+- Sign in
 
 ## 🛠️ Technical Stack
 
@@ -58,11 +59,27 @@ Coming soon... ⏳
 
 ## 📂 Project Structure
 
-Coming soon... ⏳
+```
+/
+├── assets/         # Frontend assets managed by Webpack
+├── bin/            # Executable scripts
+├── config/         # Configuration files (services, routes, packages) 
+├── data/
+|   └── db/         # Database data files
+├── docker/         # Dockerfiles and related configurations
+├── docs/           # Resources for the documentation
+├── migrations/     # Doctrine database migration files
+├── public/         # Publicly accessible files
+├── src/            # Source code 
+├── templates/      # Twig templates
+└── tests/          # Test code
+```
 
 ## 🧪 Tests
 
-Coming soon... ⏳
+```bash
+make test
+```
 
 ## 📄 License
 

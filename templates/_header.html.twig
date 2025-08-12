@@ -1,0 +1,58 @@
+<header>
+    <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                Portfolio Manager
+            </a>
+            <div class="navbar-burger js-burger" data-target="navbar-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="navbar-menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/"> <i class="fa fa-house"></i> Home </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown">
+                    <a class="navbar-link is-arrowless current-theme">
+                        <i class="fa fa-desktop"></i>
+                    </a>
+
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item set-theme" data-theme="light">
+                            <i class="fa fa-sun"></i> Light
+                        </a>
+                        <a class="navbar-item set-theme" data-theme="dark">
+                            <i class="fa fa-moon"></i> Dark
+                        </a>
+                        <a class="navbar-item set-theme" data-theme="system">
+                            <i class="fa fa-desktop"></i> System
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="button is-light" href="/logout">
+                                Log out
+                            </a>
+                        {% else %}
+                            <a class="button is-primary">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="{{ path('app_security_login') }}">
+                                Log in
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

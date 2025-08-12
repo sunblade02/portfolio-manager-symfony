@@ -17,4 +17,5 @@ COPY --from=node /opt /opt
 RUN install-php-extensions \
     xdebug \
     apcu \
-    intl
+    intl \
+    pdo_mysql
