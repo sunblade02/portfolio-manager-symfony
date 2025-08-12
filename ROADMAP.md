@@ -1,12 +1,12 @@
-# 🗺️ Roadmap - PortfolioManager (Symfony)
+# 🗺️ Roadmap - PortfolioManager (Rust)
 
-Last update : 07/18/2025
+Last update : 08/12/2025
 
 ## Version 1.0
 
 ### Authentication
 - [ ] Sign up
-- [ ] Sign-in
+- [x] Sign in
 
 ### Transaction
 - [ ] Add transaction (token ticker, amount of tokens, value in USD)

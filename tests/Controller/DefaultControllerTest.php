@@ -2,15 +2,17 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Test\AbstractWebTestCase;
 
-final class DefaultControllerTest extends WebTestCase
+final class DefaultControllerTest extends AbstractWebTestCase
 {
     public function testIndex(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/default');
+        $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
+
+        $this->assertSelectorTextContains('title', 'Home');
     }
 }

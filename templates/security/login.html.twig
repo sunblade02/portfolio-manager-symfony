@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in - {{ parent() }}{% endblock %}
+
+{% block body %}
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a aria-current="page">Log in</a></li>
+    </ul>
+</nav>
+
+<h1 class="title">Log in</h1>
+
+<div class="columns is-centered">
+    <div class="column is-half is-full-mobile">
+        {% if error %}
+            <div class="notification is-danger">
+                <button class="delete"></button>
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <form action="{{ path('app_security_login') }}" method="post">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                    <input name="_username" class="input" type="email" required placeholder="Email input" value="{{ last_username }}">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                    <input name="_password" class="input" type="password" required placeholder="Password">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-success">
+                    Log in
+                    </button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

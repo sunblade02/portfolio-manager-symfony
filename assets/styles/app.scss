@@ -3,6 +3,21 @@
 @import "bulma/css/bulma.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
 .navbar-brand a {
     font-family: orbitron;
 }
