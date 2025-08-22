@@ -15,6 +15,41 @@ services:
     ports:
       - ${DB_PORT:-3306}:3306
 
+  redis:
+    container_name: portfolio-manager-symfony_redis
+    image: redis:8.2
+    restart: on-failure:3
+    environment:
+      - REDIS_REQUIREPASS=${REDIS_REQUIREPASS:-password}
+    volumes:
+      - ./data/redis:/data
+    command:
+      - /bin/sh
+      - -c
+      - redis-server --requirepass "$${REDIS_REQUIREPASS}"
+
+  mongo:
+    container_name: portfolio-manager-symfony_mongo
+    image: mongo:7.0
+    restart: on-failure:3
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-portfolio_manager}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_USERNAME:-password}
+    volumes:
+      - ./data/mongo:/data/db
+
+  mongo-express:
+    container_name: portfolio-manager-symfony_mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - ${ME_PORT:-8081}:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL:-mongodb://portfolio_manager:password@mongo:27017/}
+      ME_CONFIG_BASICAUTH: false
+
   php:
     build:
       context: docker/php
@@ -22,10 +57,26 @@ services:
     container_name: portfolio-manager-symfony_php
     restart: on-failure:3
     depends_on:
-    - db
+      - db
+      - redis
+      - mongo
     volumes:
       - ./:/app
     ports:
       - ${PHP_PORT:-8000}:8000
     working_dir: /app
     command: php -S 0.0.0.0:8000 -t public
+
+  worker:
+    build:
+      context: docker/php
+    image: dev-php
+    container_name: portfolio-manager-symfony_worker
+    restart: on-failure:3
+    depends_on:
+      - redis
+      - mongo
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: php bin/console app:process-logs

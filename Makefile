@@ -23,7 +23,7 @@ test:
 	-@make create-db-test
 	docker compose up -d
 	docker run --rm --network portfolio-manager-symfony_default -v $(PWD):/app -w /app dev-php sh -c "\
-		php vendor/bin/phpstan && \
+		php vendor/bin/phpstan --memory-limit=256M && \
 		php bin/console doctrine:migration:migrate --env test && \
 		php bin/phpunit"
 
