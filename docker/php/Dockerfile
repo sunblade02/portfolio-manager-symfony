@@ -18,4 +18,6 @@ RUN install-php-extensions \
     xdebug \
     apcu \
     intl \
-    pdo_mysql
+    pdo_mysql \
+    redis \
+    mongodb
